@@ -62,3 +62,5 @@ If the audit log for the model is disabled (e.g. by removing or commenting out [
 Similarly, if translation of the model is disabled  (e.g. by removing or commenting out [this line](https://github.com/decibyte/django-auditlog-modeltranslation-testcase/blob/master/app/translation.py#L6)), tests also pass as expected.
 
 But when both features are enabled, the above problem occurs.
+
+This issue has been reported for [`django-audit-log`](https://github.com/Atomidata/django-audit-log/issues/48) and [`django-modeltranslation`](https://github.com/deschler/django-modeltranslation/issues/420).
