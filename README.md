@@ -1,5 +1,7 @@
 # Incompatibility between `django-audit-log` and `django-modeltranslation`
 
+_I found [a solution](#the-solution) to this problem. This original problem description is kept here, allowing others with the same issue to find the description and the solution._
+
 This is a small Django project that utilises both `django-audit-log` and `django-modeltranslation`. It contains the Django app `app` with the model `MyModel`. Also included is a simple test for the model.
 
 The project is set up with a SQLite database running in memory.
@@ -64,3 +66,8 @@ Similarly, if translation of the model is disabled  (e.g. by removing or comment
 But when both features are enabled, the above problem occurs.
 
 This issue has been reported for [`django-audit-log`](https://github.com/Atomidata/django-audit-log/issues/48) and [`django-modeltranslation`](https://github.com/deschler/django-modeltranslation/issues/420).
+
+
+## <a name="the-solution"></a>The Solution
+
+After a while, and after going through the sources of both packages (yay, open source!) it suddenly struck me what the problem was and how to solve it: You simply need to register the auto generated audit log models for translation as well as the regular models, [as seen in this branch comparison](https://github.com/decibyte/django-auditlog-modeltranslation-testcase/compare/fix?expand=1#diff-f5e2c57158f98362114fabca111c67dfR7).
