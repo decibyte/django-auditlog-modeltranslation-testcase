@@ -4,6 +4,7 @@ from . import models
 
 
 @register(models.MyModel)
+@register(models.MyModel.audit_log.model)
 class MyModelTranslationOptions(TranslationOptions):
     """Translation options for MyModel."""
 
